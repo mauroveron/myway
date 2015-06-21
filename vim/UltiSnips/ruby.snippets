@@ -1,0 +1,14 @@
+snippet seqmig "Sequel migration" b
+Sequel.migration do
+  up do
+    $1
+  end
+  down do
+    $2
+  end
+end
+endsnippet
+
+snippet apg "awesome print" b
+ap [${1:pg.uri.to_s}, $2]
+endsnippet

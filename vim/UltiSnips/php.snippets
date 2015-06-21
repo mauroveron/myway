@@ -1,0 +1,110 @@
+snippet tdie "Die wraped in php tags"
+<?php die("$1"); ?>
+endsnippet
+
+snippet clog "console.log"
+console.log($1);
+endsnippet
+
+snippet phpt "inline php tag"
+<?php $1 ?>
+endsnippet
+
+snippet bul "tracing bullet"
+echo "==================\n";
+die("$1\n");
+endsnippet
+
+snippet ate "assert attribute equals"
+$this->assertObjectHasAttribute('$2', $${1:json});
+$this->assertEquals($3, $$1->$2);
+endsnippet
+
+snippet att "assert attribute is of type"
+$this->assertObjectHasAttribute('${2:attribute}', $${1:object});
+$this->assertThat($$1->$2, $this->isType('${3:string}'));
+endsnippet
+
+snippet atn "assert attribute is of type or null"
+$this->assertObjectHasAttribute('${2:attribute}', $${1:object});
+$this->assertThat($$1->$2, $this->logicalOr(
+	$this->isType('${3:string}'),
+	$this->isNull()
+));
+endsnippet
+
+
+snippet dv "die(var_dump())"
+die(var_dump($1));
+endsnippet
+
+snippet tdv "die(var_dump())"
+echo "======== $1\n";
+die(var_dump($2));
+endsnippet
+
+snippet vv "var_dump()"
+var_dump($1);
+endsnippet
+
+snippet tvv "var_dump()"
+echo "======== $1\n";
+var_dump($2);
+endsnippet
+
+snippet fun "function"
+${1:public} function ${2:myFunction}($3)
+{
+	${4:// TODO: insert code}
+}
+endsnippet
+
+snippet try "try catch block"
+try \{
+	${0:${VISUAL:\/\/ add code here}}
+\} catch (${2:RuntimeException} $ex) \{
+	${3:Log::error($ex);}
+\}
+endsnippet
+
+snippet test "phpunit test"
+/** @test **/
+public function it_$1()
+{
+	$0
+}
+endsnippet
+
+snippet fk "Laravel migration FK"
+$table->${1:integer}('${2:field_id}')->unsigned()->index();
+$table->foreign('$2')->references('${3:id}')->on('${4:table}')${5:->onDelete('${6:cascade}')};
+endsnippet
+
+snippet dropfk "Larvel drop FK"
+$table->dropForeign('${1:table_name_field_id}_foreign');
+endsnippet
+
+snippet type "object type (class|interface|trait)"
+/**
+ * docblock
+ */
+${1:class} ${2:myInterface}
+{
+	$0
+}
+endsnippet
+
+snippet sig "inteface method signature"
+/**
+ * docblock
+ */
+public function ${1}($2);
+endsnippet
+
+snippet nam "namespace declaration"
+namespace $1;$0
+endsnippet
+
+snippet ll "laravel log"
+\Log::${1:debug}($2);$0
+endsnippet
