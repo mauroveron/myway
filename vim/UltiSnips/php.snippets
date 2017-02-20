@@ -10,6 +10,13 @@ snippet phpt "inline php tag"
 <?php $1 ?>
 endsnippet
 
+snippet pf "PHP file"
+<?php
+${1:namespace $2;}
+
+$3
+endsnippet
+
 snippet bul "tracing bullet"
 echo "==================\n";
 die("$1\n");

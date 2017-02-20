@@ -5,6 +5,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
@@ -16,9 +17,26 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdtree'
 Plugin 'SirVer/ultisnips'
 Plugin 'bling/vim-airline'
-Plugin 'airblade/vim-gitgutter'
+Plugin 'fatih/vim-go'
+" Commented out because breaks ctrlp-funky
+" https://github.com/tacahiroy/ctrlp-funky/issues/85
+"Plugin 'airblade/vim-gitgutter'
 Plugin 'godlygeek/tabular'
 Plugin 'mattn/emmet-vim'
+Plugin 'tacahiroy/ctrlp-funky'
+Plugin 'rking/ag.vim'
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/gist-vim'
+Plugin 'dericofilho/vim-phpfmt'
+Plugin 'vim-scripts/taglist.vim'
+"Plugin 'scrooloose/syntastic'
+Plugin 'vim-scripts/Mark--Karkat'
+Plugin 'pangloss/vim-javascript'
+Plugin 'bumaociyuan/vim-swift'
+Plugin 'Valloric/YouCompleteMe'
+
+" color schemes
+Plugin 'flazz/vim-colorschemes'
 
 call vundle#end()
 
@@ -46,6 +64,7 @@ set hidden
 set foldmethod=marker
 set foldlevel=99
 set encoding=utf-8
+set diffopt+=vertical
 
 " search
 set ignorecase
@@ -61,8 +80,8 @@ set shortmess=at
 
 set scrolloff=3
 
-set wildignore=*.o,*.obj,*.swp,*.bak,*.pyc,*~,build,cache,*/sites/default/files,tmp
-set wildignore+=*/vendor/**
+set wildignore=*.o,*.obj,*.swp,*.bak,*.pyc,*~,build,cache,*/sites/default/files,tmp,*.class,*.egg-info,__pycache__
+"set wildignore+=*/vendor/**
 set wildignore+=*/node_modules/**
 
 
@@ -83,11 +102,10 @@ au BufNewFile,BufReadPost *.md setl ft=markdown tw=80
 " look and feel {{{
 "let g:solarized_termcolors=256
 "set t_Co=256
-colorscheme solarized
+colorscheme molokai
 set cursorline
 
 set listchars=tab:▸\ ,eol:¬,trail:·
-"set cursorline
 "set nonu
 map <leader>b :set nu!<CR>
 set title " show filename in titlebar / terminal
@@ -270,5 +288,29 @@ nmap <C-e> :CtrlPFunky<CR>
 
 let g:UltiSnipsEditSplit = 'vertical'
 
+let g:phpfmt_psr2 = 1
+let g:phpfmt_on_save = 0
+let g:phpfmt_passes_list = 'OrderAndRemoveUseClauses,AlignEquals,AlignDoubleArrow,AlignGroupDoubleArrow'
+
+""" taglist.vim config
+let g:Tlist_Exit_OnlyWindow = 1
+let g:Tlist_Sort_Type = "order"
+let g:Tlist_Use_Right_Window = 1
+let g:Tlist_WinWidth = 50
+let g:Tlist_Show_One_File = 1
+let g:Tlist_GainFocus_On_ToggleOpen = 1
+
+nmap <F2> :TlistToggle<CR>
+
+nmap <F8> :call PhpFmtFixFile()<CR>
+
+nmap <F4> :Gst<CR>
+
+:imap jj <Esc>
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_flake8_args = "--ignore=E501"
 
 " vim:fdm=marker:
