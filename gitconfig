@@ -1,0 +1,45 @@
+[color]
+   ui = auto
+[color "branch"]
+   current = yellow reverse
+   local = yellow
+   remote = green
+[color "diff"]
+   meta = yellow bold dim
+   frag = magenta bold
+   old = red bold
+   new = green bold dim
+[color "status"]
+   added = yellow
+   changed = green
+   untracked = cyan
+
+[alias]
+  co = checkout
+  br = branch
+  ci = commit
+  st = status -sb
+  unstage = reset HEAD --
+  l = log --decorate --stat --graph --pretty=format:'%C(yellow)%h%Creset (%ar - %Cred%an%Creset), %s%C(blue)%d%Creset%n'
+  ll = log --decorate --all --oneline --graph
+  lg = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  standup = !git lg --since yesterday --author `git config user.email`
+  pull = pull --rebase
+  outgoing = log @{u}.. --oneline
+	switch = !legit switch \"$@\"
+	branches = !legit branches
+	sprout = !legit sprout \"$@\"
+	unpublish = !legit unpublish \"$@\"
+	harvest = !legit harvest \"$@\"
+	sync = !legit sync \"$@\"
+	publish = !legit publish \"$@\"
+	graft = !legit graft \"$@\"
+[user]
+	name = Mauro Veron
+	email = mauroveron@gmail.com
+[github]
+	user = mauroveron
+[core]
+	editor = /usr/local/bin/vim
+[push]
+	default = simple
